@@ -24,4 +24,12 @@ export class EmployeeService {
   getEmployees(): Observable<EmployeeData[]> {
     return this.http.get<EmployeeData[]>(this.apiUrl);
   }
+
+  addEmployee(employee: Omit<EmployeeData, 'id'>): Observable<EmployeeData> {
+    return this.http.post<EmployeeData>(this.apiUrl, employee);
+  }
+
+  deleteEmployee(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
