@@ -5,50 +5,48 @@
 
     <div>
       <h2 class="text-2xl font-bold text-gray-800">
-        Departments
+        Roles
       </h2>
 
       <p class="text-gray-500 mt-1">
-        Manage your departments
+        Manage your system roles
       </p>
     </div>
 
   </div>
 
 
-  <!-- Add / Edit Department Form -->
+  <!-- Add / Edit Role Form -->
   <div class="bg-white rounded-lg shadow p-6 mb-6">
 
     <h3 class="text-lg font-semibold text-gray-800 mb-5">
-
-      @if (editingDepartmentId === null) {
-        Add Department
+      @if (editingRoleId === null) {
+        Add Role
       } @else {
-        Edit Department
+        Edit Role
       }
-
     </h3>
 
 
     <form
-      (ngSubmit)="editingDepartmentId === null
-        ? addDepartment()
-        : updateDepartment()">
+      (ngSubmit)="editingRoleId === null
+        ? addRole()
+        : updateRole()">
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        <!-- Department Name -->
+        <!-- Role Name -->
         <div>
 
           <label class="block text-sm font-medium text-gray-700 mb-2">
-            Department Name
+            Role Name
           </label>
 
           <input
             type="text"
             name="name"
-            [(ngModel)]="newDepartment.name"
-            placeholder="Enter department name"
+            [(ngModel)]="newRole.name"
+            placeholder="Enter role name"
             class="w-full border border-gray-300 rounded-lg px-4 py-2.5">
 
         </div>
@@ -64,8 +62,8 @@
           <input
             type="text"
             name="description"
-            [(ngModel)]="newDepartment.description"
-            placeholder="Enter department description"
+            [(ngModel)]="newRole.description"
+            placeholder="Enter role description"
             class="w-full border border-gray-300 rounded-lg px-4 py-2.5">
 
         </div>
@@ -76,7 +74,7 @@
       <!-- Buttons -->
       <div class="flex justify-end gap-3 mt-6">
 
-        @if (editingDepartmentId !== null) {
+        @if (editingRoleId !== null) {
 
           <button
             type="button"
@@ -92,10 +90,10 @@
           type="submit"
           class="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition">
 
-          @if (editingDepartmentId === null) {
-            Save Department
+          @if (editingRoleId === null) {
+            Save Role
           } @else {
-            Update Department
+            Update Role
           }
 
         </button>
@@ -107,17 +105,17 @@
   </div>
 
 
-  <!-- Department List -->
+  <!-- Role List -->
   <div class="bg-white rounded-lg shadow overflow-hidden">
 
     <div class="p-5 border-b">
 
       <h3 class="text-lg font-semibold text-gray-800">
-        Department List
+        Role List
       </h3>
 
       <p class="text-sm text-gray-500 mt-1">
-        Departments registered in the system
+        Roles registered in the system
       </p>
 
     </div>
@@ -154,36 +152,34 @@
 
         <tbody>
 
-          @for (department of departments; track department.id) {
+          @for (role of roles; track role.id) {
 
             <tr class="border-t hover:bg-gray-50">
 
               <td class="p-4">
-                {{ department.id }}
+                {{ role.id }}
               </td>
 
               <td class="p-4">
-                {{ department.name }}
+                {{ role.name }}
               </td>
 
               <td class="p-4">
-                {{ department.description }}
+                {{ role.description }}
               </td>
 
               <td class="p-4">
 
-                <!-- Edit -->
                 <button
                   type="button"
-                  (click)="editDepartment(department)"
+                  (click)="editRole(role)"
                   class="text-blue-600 mr-4 hover:text-blue-800">
                   Edit
                 </button>
 
-                <!-- Delete -->
                 <button
                   type="button"
-                  (click)="deleteDepartment(department.id)"
+                  (click)="deleteRole(role.id)"
                   class="text-red-600 hover:text-red-800">
                   Delete
                 </button>
@@ -202,4 +198,4 @@
 
   </div>
 
-</div>
+</div>n
