@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService, EmployeeData } from '../../services/employee';
+import { formatDate } from '@angular/common';
+import {DecimalPipe} from  '@angular/common';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './employee.html',
   styleUrl: './employee.css',
 })
