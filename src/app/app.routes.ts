@@ -3,6 +3,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { Employee } from './pages/employee/employee';
 import { Department } from './pages/department/department';
 import { Role } from './pages/role/role';
+import { User } from './pages/users/user/user';
 
 
 
@@ -27,6 +28,11 @@ export const routes: Routes = [
 {
     path: 'role',
     component: Role,
+  },
+
+  {
+    path: 'users',
+    component: User
   }
   
 ];

@@ -1,1 +1,278 @@
-<p>user works!</p>
+<div class="p-6">
+
+  <!-- Page Header -->
+  <div class="mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-800">
+      Users
+    </h2>
+
+    <p class="text-gray-500 mt-1">
+      Manage system users
+    </p>
+
+  </div>
+
+
+  <!-- Add / Edit User Form -->
+  <div class="bg-white rounded-lg shadow p-6 mb-6">
+
+    <h3 class="text-lg font-semibold text-gray-800 mb-5">
+
+      @if (editingUserId === null) {
+        Add User
+      } @else {
+        Edit User
+      }
+
+    </h3>
+
+
+    <form
+      (ngSubmit)="editingUserId === null
+        ? addUser()
+        : updateUser()">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+
+        <!-- Username -->
+        <div>
+
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Username
+          </label>
+
+          <input
+            type="text"
+            name="username"
+            [(ngModel)]="newUser.username"
+            placeholder="Enter username"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5">
+
+        </div>
+
+
+        <!-- Email -->
+        <div>
+
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Email
+          </label>
+
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="newUser.email"
+            placeholder="Enter email"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5">
+
+        </div>
+
+
+        <!-- Password -->
+        <div>
+
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Password
+          </label>
+
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="newUser.password"
+            placeholder="Enter password"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5">
+
+        </div>
+
+
+        <!-- Employee ID -->
+        <div>
+
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Employee ID
+          </label>
+
+          <input
+            type="number"
+            name="employeeId"
+            [(ngModel)]="newUser.employeeId"
+            placeholder="Enter employee ID"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5">
+
+        </div>
+
+
+        <!-- Role ID -->
+        <div>
+
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Role ID
+          </label>
+
+          <input
+            type="number"
+            name="roleId"
+            [(ngModel)]="newUser.roleId"
+            placeholder="Enter role ID"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2.5">
+
+        </div>
+
+      </div>
+
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-3 mt-6">
+
+        @if (editingUserId !== null) {
+
+          <button
+            type="button"
+            (click)="resetForm()"
+            class="border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-100 transition">
+
+            Cancel
+
+          </button>
+
+        }
+
+
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition">
+
+          @if (editingUserId === null) {
+            Save User
+          } @else {
+            Update User
+          }
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!-- User List -->
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+
+    <div class="p-5 border-b">
+
+      <h3 class="text-lg font-semibold text-gray-800">
+        User List
+      </h3>
+
+      <p class="text-sm text-gray-500 mt-1">
+        Users registered in the system
+      </p>
+
+    </div>
+
+
+    <div class="overflow-x-auto">
+
+      <table class="w-full">
+
+        <thead class="bg-gray-100">
+
+          <tr>
+
+            <th class="text-left p-4">
+              ID
+            </th>
+
+            <th class="text-left p-4">
+              Username
+            </th>
+
+            <th class="text-left p-4">
+              Email
+            </th>
+
+            <th class="text-left p-4">
+              Employee ID
+            </th>
+
+            <th class="text-left p-4">
+              Role ID
+            </th>
+
+            <th class="text-left p-4">
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          @for (user of users; track user.id) {
+
+            <tr class="border-t hover:bg-gray-50">
+
+              <td class="p-4">
+                {{ user.id }}
+              </td>
+
+              <td class="p-4">
+                {{ user.username }}
+              </td>
+
+              <td class="p-4">
+                {{ user.email }}
+              </td>
+
+              <td class="p-4">
+                {{ user.employeeId }}
+              </td>
+
+              <td class="p-4">
+                {{ user.roleId }}
+              </td>
+
+              <td class="p-4">
+
+                <!-- Edit -->
+                <button
+                  type="button"
+                  (click)="editUser(user)"
+                  class="text-blue-600 mr-4 hover:text-blue-800">
+
+                  Edit
+
+                </button>
+
+
+                <!-- Delete -->
+                <button
+                  type="button"
+                  (click)="deleteUser(user.id)"
+                  class="text-red-600 hover:text-red-800">
+
+                  Delete
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
