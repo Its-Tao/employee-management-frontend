@@ -4,6 +4,7 @@ import { Employee } from './pages/employee/employee';
 import { Department } from './pages/department/department';
 import { Role } from './pages/role/role';
 import { User } from './pages/users/user/user';
+import { Salary } from './pages/salaries/salary/salary';
 
 
 
@@ -25,16 +26,20 @@ export const routes: Routes = [
     path: 'department',
     component: Department,
   },
-{
+  {
     path: 'role',
     component: Role,
   },
 
   {
     path: 'users',
-    component: User
+    component: User,
+  },
+
+  {
+    path: 'salaries',
+    component: Salary,
   }
-  
 ];
 
 
