@@ -24,13 +24,9 @@ export const routes: Routes = [
     path: 'department',
     component: Department,
   },
-  {
-      path: 'department',
-    component: Department,
-  },
 {
-      path: 'department',
-    component: Department,
+    path: 'role',
+    component: Role,
   }
   
 ];
