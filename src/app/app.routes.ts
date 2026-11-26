@@ -13,10 +13,18 @@ import { Salary } from './pages/salaries/salary/salary';
 
 
 export const routes: Routes = [
+
+  {
+  path: '',
+  redirectTo: 'dashboard',
+  pathMatch: 'full'
+  },
+
   {
     path: 'dashboard',
     component: Dashboard,
   },
+
   {
     path: 'employee',
     loadComponent: () => import('./pages/employee/employee').then((m) => m.Employee),
@@ -26,6 +34,7 @@ export const routes: Routes = [
     path: 'department',
     component: Department,
   },
+
   {
     path: 'role',
     component: Role,
@@ -39,7 +48,13 @@ export const routes: Routes = [
   {
     path: 'salaries',
     component: Salary,
-  }
+  },
+  
+  {
+
+  path: '**',
+  redirectTo: 'dashboard'
+}
 ];
 
 
